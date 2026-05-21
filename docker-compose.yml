@@ -1,0 +1,14 @@
+services:
+  web:
+    build: .
+    environment:
+      PORT: "3000"
+      REDIS_URL: "redis://redis:6379"
+      APP_MESSAGE: "Hello from a Docker Compose app on Coolify"
+    ports:
+      - "3003:3000"
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
